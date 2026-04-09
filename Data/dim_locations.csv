@@ -1,0 +1,13 @@
+"LocationID","LocationName","State","Region","CostIndex"
+1,"Las Vegas","NV","West",1
+2,"Phoenix","AZ","West",0.96
+3,"Austin","TX","South",1.04
+4,"Chicago","IL","Midwest",1.1
+5,"Atlanta","GA","South",0.99
+6,"Seattle","WA","West",1.18
+7,"Denver","CO","West",1.08
+8,"Nashville","TN","South",0.98
+9,"Miami","FL","South",1.06
+10,"Remote-East","Remote","East",1
+11,"Remote-Central","Remote","Central",1
+12,"Remote-West","Remote","West",1.03

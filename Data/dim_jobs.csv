@@ -1,0 +1,41 @@
+"JobID","DepartmentID","JobTitle","JobLevel","Exempt","DepartmentName","FunctionGroup","BaseSalaryMin","BaseSalaryMax"
+1,1,"Chief Executive Officer",10,TRUE,"Executive","Corporate",4e+05,560000
+2,1,"Chief Operating Officer",9,TRUE,"Executive","Corporate",310000,420000
+3,1,"Vice President",8,TRUE,"Executive","Corporate",250000,340000
+4,2,"Software Engineer I",1,TRUE,"Engineering","Technical",43000,62000
+5,2,"Software Engineer II",2,TRUE,"Engineering","Technical",62000,88000
+6,2,"Senior Software Engineer",3,TRUE,"Engineering","Technical",86000,118000
+7,2,"Engineering Manager",4,TRUE,"Engineering","Technical",112000,150000
+8,2,"Director of Engineering",6,TRUE,"Engineering","Technical",185000,235000
+9,3,"Product Analyst",2,TRUE,"Product","Technical",62000,88000
+10,3,"Product Manager",3,TRUE,"Product","Technical",86000,118000
+11,3,"Senior Product Manager",4,TRUE,"Product","Technical",112000,150000
+12,3,"Director of Product",6,TRUE,"Product","Technical",185000,235000
+13,4,"IT Support Specialist",1,FALSE,"IT","Technical",43000,62000
+14,4,"Systems Administrator",2,TRUE,"IT","Technical",62000,88000
+15,4,"IT Manager",4,TRUE,"IT","Technical",112000,150000
+16,5,"Financial Analyst",2,TRUE,"Finance","Corporate",62000,88000
+17,5,"Senior Financial Analyst",3,TRUE,"Finance","Corporate",86000,118000
+18,5,"Finance Manager",4,TRUE,"Finance","Corporate",112000,150000
+19,5,"Director of Finance",6,TRUE,"Finance","Corporate",185000,235000
+20,6,"HR Coordinator",1,FALSE,"HR","Corporate",43000,62000
+21,6,"HR Generalist",2,TRUE,"HR","Corporate",62000,88000
+22,6,"HR Business Partner",3,TRUE,"HR","Corporate",86000,118000
+23,6,"HR Manager",4,TRUE,"HR","Corporate",112000,150000
+24,6,"Director of HR",6,TRUE,"HR","Corporate",185000,235000
+25,7,"Marketing Specialist",1,TRUE,"Marketing","Business",43000,62000
+26,7,"Digital Marketing Manager",3,TRUE,"Marketing","Business",86000,118000
+27,7,"Marketing Director",5,TRUE,"Marketing","Business",145000,185000
+28,8,"Sales Development Representative",1,FALSE,"Sales","Business",43000,62000
+29,8,"Account Executive",2,TRUE,"Sales","Business",62000,88000
+30,8,"Sales Manager",4,TRUE,"Sales","Business",112000,150000
+31,8,"Director of Sales",6,TRUE,"Sales","Business",185000,235000
+32,9,"Operations Analyst",2,TRUE,"Operations","Business",62000,88000
+33,9,"Operations Manager",4,TRUE,"Operations","Business",112000,150000
+34,9,"Director of Operations",6,TRUE,"Operations","Business",185000,235000
+35,10,"Customer Support Representative",1,FALSE,"Customer Support","Business",43000,62000
+36,10,"Customer Support Manager",3,TRUE,"Customer Support","Business",86000,118000
+37,10,"Director of Customer Support",5,TRUE,"Customer Support","Business",145000,185000
+38,11,"Legal Analyst",2,TRUE,"Legal","Corporate",62000,88000
+39,11,"Corporate Counsel",4,TRUE,"Legal","Corporate",112000,150000
+40,11,"General Counsel",8,TRUE,"Legal","Corporate",250000,340000

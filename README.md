@@ -3,29 +3,27 @@
 ## Overview
 This project demonstrates the design and generation of a synthetic enterprise-level HR and People Analytics database using R.
 
-The dataset simulates a modern organization with 10,000 employees and includes workforce, recruiting, compensation, performance, engagement, and operational data across a fully relational structure.
+The dataset simulates a modern organization with 10,000 employees and includes workforce, recruiting, compensation, performance, engagement, and operational data across a relational data model.
 
-The goal of this project is to showcase skills in:
-- R-based data engineering
-- synthetic data generation
-- dimensional data modeling
-- people analytics
-- data preparation for SQL and BI tools
-
-All data is synthetic and created for portfolio and educational use.
+This project is designed to showcase real-world skills in:
+- Data engineering with R
+- Synthetic data generation at scale
+- Dimensional modeling (fact and dimension tables)
+- People analytics and workforce insights
+- Data preparation for SQL and BI tools
 
 ---
 
-## Project Highlights
+## Key Highlights
 
 - 10,000 synthetic employees
-- 12+ interconnected tables (dimension + fact)
-- Realistic workforce lifecycle modeling
+- 15+ interconnected tables (dimension + fact)
+- Enterprise-style HR data model
 - Manager hierarchy and span of control
-- Compensation history and progression
-- Recruiting pipeline and candidate tracking
+- Compensation history with salary progression
+- Recruiting pipeline with candidate tracking
 - Performance and engagement analytics
-- Monthly headcount tracking
+- Monthly headcount snapshots
 - Automated CSV export pipeline
 - Built-in QA validation checks
 
@@ -45,63 +43,71 @@ All data is synthetic and created for portfolio and educational use.
 
 ## Data Model
 
-This project follows a dimensional-style data model commonly used in analytics and BI environments.
+The dataset follows a dimensional structure used in analytics and data warehousing.
 
 ### Dimension Tables
-- dim_employees
-- dim_employee_demographics
-- dim_departments
-- dim_jobs
-- dim_locations
+- dim_employees  
+- dim_employee_demographics  
+- dim_departments  
+- dim_jobs  
+- dim_locations  
 
 ### Fact Tables
-- fact_employee_current
-- fact_compensation_history
-- fact_promotions
-- fact_performance_reviews
-- fact_engagement_surveys
-- fact_learning_completions
-- fact_leave_events
-- fact_requisitions
-- fact_candidates
-- fact_headcount_monthly
-- fact_manager_span
+- fact_employee_current  
+- fact_compensation_history  
+- fact_promotions  
+- fact_performance_reviews  
+- fact_engagement_surveys  
+- fact_learning_completions  
+- fact_leave_events  
+- fact_requisitions  
+- fact_candidates  
+- fact_headcount_monthly  
+- fact_manager_span  
+
+---
+## Screenshots
+
+### Employee Table Preview
+![Employee Table](screenshots/employeetabl1.jpg)
+
+### Performance Review Table Preview
+![Performance Review Table](screenshots/performancereviewtble1.jpg)
+
+### Requisitions Table Preview
+![Requisitions Table](screenshots/reqtble1.jpg)
 
 ---
 
-## Key Features
+## What This Project Demonstrates
 
-### Workforce Modeling
-- Employee demographics, job levels, departments, and locations
-- Employment status (active vs terminated)
-- Tenure and age calculations
-- Remote vs onsite classification
+### Data Engineering
+- End-to-end synthetic data generation pipeline in R
+- Scalable dataset creation (10K+ records)
+- Structured export to analytics-ready CSVs
 
-### Compensation Analytics
-- Salary bands by job level
-- Historical compensation tracking
-- Bonus targets and progression
-- Pay grade simulation
+### People Analytics
+- Workforce lifecycle modeling (hire → performance → promotion → attrition)
+- Engagement and retention indicators
+- Recruiting funnel and hiring metrics
 
-### Performance & Engagement
-- Annual performance reviews
-- Potential ratings
-- Goal completion metrics
-- Engagement and inclusion scores
-- Intent-to-stay indicators
+### Data Modeling
+- Dimension and fact table design
+- Business-ready schema for BI tools
+- Support for relational joins and KPI calculations
 
-### Recruiting Pipeline
-- Requisitions and hiring managers
-- Candidate funnel stages
-- Source tracking (LinkedIn, referral, etc.)
-- Interview scoring
-- Time-to-fill metrics
+---
 
-### Organizational Insights
-- Manager hierarchy
-- Span of control
-- Department-level headcount
-- Monthly workforce snapshots
+## Example Business Questions
+
+- What is the attrition rate by department?
+- Which job levels experience the highest turnover?
+- How does performance relate to promotions?
+- What is the average salary by job level and location?
+- Which recruiting sources produce the most hires?
+- What is the average time-to-fill by recruiter?
+- How does engagement impact intent to stay?
+- What is the average manager span of control?
 
 ---
 
@@ -117,9 +123,75 @@ synthetic-hr-analytics-database/
 │   └── (generated CSV files)
 │
 ├── documentation/
-│   └── (data dictionary / schema)
+│   └── (data dictionary and schema files)
 │
 ├── screenshots/
-│   └── (project outputs / dashboards)
+│   └── (sample outputs and dashboards)
 │
 └── README.md
+```
+---
+
+## How to Run
+1. Clone the repository
+
+2. Open the R script
+
+
+3. Install required packages
+```text
+install.packages(c("dplyr", "tidyr", "stringr", "purrr", "lubridate", "tibble"))
+```
+
+4. Run the script
+
+ The script will: 
+- generate all tables
+- run validation checks
+- export CSV files to a local output folder
+
+---
+
+## Output
+
+The project produces a complete analytics dataset including:
+
+- Employee master data
+- Compensation history
+- Recruiting pipeline
+- Performance reviews
+- Engagement surveys
+- Learning and leave events
+- Monthly workforce snapshots
+
+  
+
+## This dataset is ready for:
+
+- SQL database ingestion
+- Power BI dashboards
+- Tableau dashboards
+- analytics case studies
+
+---
+
+## Next Steps
+
+Planned enhancements include:
+
+- SQL schema and table creation scripts
+- Power BI dashboard with workforce KPIs
+- Attrition and retention analysis
+- ERD diagram and schema visualization
+- Advanced analytics use cases
+
+---
+
+
+### Author
+
+Joshua Watson
+
+People Analytics | Data Analytics | HR Technology
+
+

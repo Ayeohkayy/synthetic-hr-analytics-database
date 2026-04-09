@@ -125,6 +125,9 @@ synthetic-hr-analytics-database/
 ├── documentation/
 │   └── (data dictionary and schema files)
 │
+├── powerbi/
+│   └── (synthetic_hr_dashboard.pbix)
+│
 ├── screenshots/
 │   └── (sample outputs and dashboards)
 │

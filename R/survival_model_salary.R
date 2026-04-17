@@ -58,22 +58,8 @@ if (length(missing_cols) > 0) {
 # -----------------------------
 # 4. Clean data and create survival variables
 # -----------------------------
-employees_clean <- employees %>%
-  mutate(
-    TerminationDate = as.Date(TerminationDate),
-    event = if_else(!is.na(TerminationDate), 1, 0),
-    tenure_days = FinalTenureYears * 365.25,
-    Salary_10k = CurrentSalary / 10000,
-    DepartmentID = as.factor(DepartmentID)
-  ) %>%
-  filter(
-    !is.na(CurrentSalary),
-    !is.na(FinalTenureYears),
-    !is.na(DepartmentID),
-    CurrentSalary > 0,
-    FinalTenureYears >= 0,
-    tenure_days >= 0
-  ) %>%
+employees_clean <- employees_clean %>%
+  filter(DepartmentID != "1") %>%
   droplevels()
 
 # -----------------------------

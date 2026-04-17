@@ -102,7 +102,7 @@ Move beyond traditional attrition rates and model when employees leave and what 
 ### Key Findings
 
 #### 1. Compensation is the strongest driver of attrition
-- Every $10,000 increase in salary is associated with a ~15–16% reduction in attrition risk  
+- Every $10,000 increase in salary is associated with a ~15–17% reduction in attrition risk  
 
 #### 2. Department-level differences are limited
 - After controlling for compensation, most department effects are not statistically significant  

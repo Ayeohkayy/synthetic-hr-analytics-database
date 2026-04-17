@@ -5,39 +5,56 @@ This project demonstrates the design and generation of a synthetic enterprise-le
 
 The dataset simulates a modern organization with 10,000 employees and includes workforce, recruiting, compensation, performance, engagement, and operational data across a relational data model.
 
-This project is designed to showcase real-world skills in:
-- Data engineering with R
-- Synthetic data generation at scale
-- Dimensional modeling (fact and dimension tables)
-- People analytics and workforce insights
-- Data preparation for SQL and BI tools
+In addition to data generation, this project includes advanced workforce analytics, specifically survival modeling to understand employee attrition over time.
+
+---
+
+## What This Project Demonstrates
+
+### Data Engineering
+- End-to-end synthetic data generation pipeline in R  
+- Scalable dataset creation (10K+ records)  
+- Structured export to analytics-ready CSVs  
+
+### People Analytics
+- Workforce lifecycle modeling (hire → performance → promotion → attrition)  
+- Engagement and retention indicators  
+- Recruiting funnel and hiring metrics  
+- Survival analysis to model attrition risk over time  
+
+### Data Modeling
+- Dimension and fact table design  
+- Business-ready schema for BI tools  
+- Support for relational joins and KPI calculations  
 
 ---
 
 ## Key Highlights
-
-- 10,000 synthetic employees
-- 15+ interconnected tables (dimension + fact)
-- Enterprise-style HR data model
-- Manager hierarchy and span of control
-- Compensation history with salary progression
-- Recruiting pipeline with candidate tracking
-- Performance and engagement analytics
-- Monthly headcount snapshots
-- Automated CSV export pipeline
-- Built-in QA validation checks
+- 10,000 synthetic employees  
+- 15+ interconnected tables (dimension + fact)  
+- Enterprise-style HR data model  
+- Manager hierarchy and span of control  
+- Compensation history with salary progression  
+- Recruiting pipeline with candidate tracking  
+- Performance and engagement analytics  
+- Monthly headcount snapshots  
+- Automated CSV export pipeline  
+- Built-in QA validation checks  
+- Advanced attrition modeling using Cox Proportional Hazards and survival curves  
 
 ---
 
 ## Tech Stack
-
-- **R**
-- dplyr
-- tidyr
-- stringr
-- purrr
-- lubridate
-- tibble
+- R  
+- dplyr  
+- tidyr  
+- stringr  
+- purrr  
+- lubridate  
+- tibble  
+- survival  
+- survminer  
+- ggplot2  
 
 ---
 
@@ -66,61 +83,89 @@ The dataset follows a dimensional structure used in analytics and data warehousi
 - fact_manager_span  
 
 ---
-## Screenshots
 
-### Employee Table Preview
-![Employee Table](screenshots/employeetabl1.jpg)
+## Attrition & Retention Analysis (Survival Modeling)
 
-### Performance Review Table Preview
-![Performance Review Table](screenshots/performancereviewtble1.jpg)
-
-### Requisitions Table Preview
-![Requisitions Table](screenshots/reqtble1.jpg)
+### Objective
+Move beyond traditional attrition rates and model when employees leave and what factors influence attrition risk over time.
 
 ---
 
-## What This Project Demonstrates
+### Approach
+- Built a Cox Proportional Hazards model to quantify attrition risk  
+- Engineered salary-based features and tenure variables  
+- Created Kaplan-Meier survival curves to visualize retention patterns  
+- Controlled for department-level effects to isolate key drivers  
 
-### Data Engineering
-- End-to-end synthetic data generation pipeline in R
-- Scalable dataset creation (10K+ records)
-- Structured export to analytics-ready CSVs
+---
 
-### People Analytics
-- Workforce lifecycle modeling (hire → performance → promotion → attrition)
-- Engagement and retention indicators
-- Recruiting funnel and hiring metrics
+### Key Findings
 
-### Data Modeling
-- Dimension and fact table design
-- Business-ready schema for BI tools
-- Support for relational joins and KPI calculations
+#### 1. Compensation is the strongest driver of attrition
+- Every $10,000 increase in salary is associated with a ~15–16% reduction in attrition risk  
+
+#### 2. Department-level differences are limited
+- After controlling for compensation, most department effects are not statistically significant  
+- This suggests compensation explains much of the variation often attributed to departments  
+
+#### 3. Attrition is concentrated in early tenure
+- Lower-paid employees experience higher attrition within the first year  
+- Higher compensation improves both retention and time-to-exit  
+
+---
+
+## Visual Insights
+
+### Attrition Risk by Salary
+![Attrition Risk Curve](screenshots/survival_analysis/salary_attrition_curve.png)
+
+### Retention Over Time by Salary Band
+![Retention Curve](screenshots/survival_analysis/retention_salary_bands.png)
+
+---
+
+## Business Implications
+- Compensation is a primary lever for retention strategy  
+- Early-tenure employees represent the highest risk population  
+- Retention strategies should focus on:
+  - Competitive pay structures  
+  - First-year employee experience  
+  - Early engagement interventions  
 
 ---
 
 ## Example Business Questions
-
-- What is the attrition rate by department?
-- Which job levels experience the highest turnover?
-- How does performance relate to promotions?
-- What is the average salary by job level and location?
-- Which recruiting sources produce the most hires?
-- What is the average time-to-fill by recruiter?
-- How does engagement impact intent to stay?
-- What is the average manager span of control?
+- What is the attrition rate by department?  
+- Which job levels experience the highest turnover?  
+- How does performance relate to promotions?  
+- What is the average salary by job level and location?  
+- Which recruiting sources produce the most hires?  
+- What is the average time-to-fill by recruiter?  
+- How does engagement impact intent to stay?  
+- What is the average manager span of control?  
+- How does compensation impact attrition risk over time?  
 
 ---
 
 ## Project Structure
 
-```text
+```bash
 synthetic-hr-analytics-database/
 │
 ├── R/
-│   └── synthetic_company_database.R
+│   ├── synthetic_company_database.R
+│   ├── survival_model_salary.R
+│   └── survival_curves_salary_band.R
 │
 ├── data/
 │   └── (generated CSV files)
+│
+├── visuals/
+│   ├── salary_attrition_curve.png
+│   └── retention_salary_bands.png
+│
+├── results/
+│   └── cox_model_salary_only_results.csv
 │
 ├── documentation/
 │   └── (data dictionary and schema files)

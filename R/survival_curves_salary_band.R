@@ -1,6 +1,10 @@
 # survival_curves_salary_band.R
 # Purpose:
 # Build Kaplan-Meier survival curves by salary band to show retention over time.
+# Uses:
+# - FinalTenureYears
+# - TerminationDate
+# - CurrentSalary
 # Output:
 # - Console survival summary
 # - PNG chart of retention by salary band
@@ -29,7 +33,12 @@ employees <- read_csv(data_path, show_col_types = FALSE)
 # -----------------------------
 # 3. Validate required columns
 # -----------------------------
-required_cols <- c("CurrentSalary", "tenure_days", "event")
+required_cols <- c(
+  "FinalTenureYears",
+  "TerminationDate",
+  "CurrentSalary"
+)
+
 missing_cols <- setdiff(required_cols, names(employees))
 
 if (length(missing_cols) > 0) {
@@ -42,15 +51,20 @@ if (length(missing_cols) > 0) {
 }
 
 # -----------------------------
-# 4. Clean data and create salary bands
+# 4. Clean data and create survival variables
 # -----------------------------
 employees_clean <- employees %>%
+  mutate(
+    TerminationDate = as.Date(TerminationDate),
+    event = if_else(!is.na(TerminationDate), 1, 0),
+    tenure_days = FinalTenureYears * 365.25
+  ) %>%
   filter(
     !is.na(CurrentSalary),
-    !is.na(tenure_days),
-    !is.na(event),
-    tenure_days >= 0,
-    CurrentSalary > 0
+    !is.na(FinalTenureYears),
+    CurrentSalary > 0,
+    FinalTenureYears >= 0,
+    tenure_days >= 0
   ) %>%
   mutate(
     salary_band = case_when(
@@ -59,15 +73,28 @@ employees_clean <- employees %>%
       CurrentSalary < 180000 ~ "$120K–$180K",
       TRUE ~ "$180K+"
     )
-  )
+  ) %>%
+  droplevels()
 
+# -----------------------------
+# 5. Force salary band order
+# -----------------------------
 employees_clean$salary_band <- factor(
   employees_clean$salary_band,
   levels = c("<$80K", "$80K–$120K", "$120K–$180K", "$180K+")
 )
 
 # -----------------------------
-# 5. Fit survival model by salary band
+# 6. Quick validation checks
+# -----------------------------
+cat("\n=== Event Distribution ===\n")
+print(table(employees_clean$event, useNA = "ifany"))
+
+cat("\n=== Salary Band Distribution ===\n")
+print(table(employees_clean$salary_band, useNA = "ifany"))
+
+# -----------------------------
+# 7. Fit Kaplan-Meier model by salary band
 # -----------------------------
 surv_fit <- survfit(
   Surv(tenure_days, event) ~ salary_band,
@@ -78,7 +105,7 @@ cat("\n=== Kaplan-Meier Survival Summary by Salary Band ===\n")
 print(summary(surv_fit))
 
 # -----------------------------
-# 6. Create survival curve plot
+# 8. Create survival curve plot
 # -----------------------------
 p <- ggsurvplot(
   surv_fit,
@@ -129,10 +156,13 @@ p$plot <- p$plot +
     legend.text = element_text(size = 10)
   )
 
+# -----------------------------
+# 9. Show chart
+# -----------------------------
 print(p)
 
 # -----------------------------
-# 7. Save chart
+# 10. Save chart
 # -----------------------------
 ggsave(
   filename = file.path(output_dir, "retention_salary_bands.png"),

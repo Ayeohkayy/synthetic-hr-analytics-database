@@ -117,10 +117,10 @@ Move beyond traditional attrition rates and model when employees leave and what 
 ## Visual Insights
 
 ### Attrition Risk by Salary
-![Attrition Risk Curve](screenshots/survival_analysis/salary_attrition_curve.png)
+![Attrition Risk Curve](screenshots/Survival%20Analysis/attrition_salary_curve.png)
 
 ### Retention Over Time by Salary Band
-![Retention Curve](screenshots/survival_analysis/retention_salary_bands.png)
+![Retention Curve](screenshots/Survival%20Analysis/retention_by_salary_band.png)
 
 ---
 
@@ -188,15 +188,13 @@ synthetic-hr-analytics-database/
 
 3. Install required packages
 ```text
-install.packages(c("dplyr", "tidyr", "stringr", "purrr", "lubridate", "tibble"))
+install.packages(c("dplyr", "tidyr", "stringr", "purrr", "lubridate", "tibble","survival", "survminer", "ggplot2"))
 ```
 
-4. Run the script
-
- The script will: 
-- generate all tables
-- run validation checks
-- export CSV files to a local output folder
+4. Run scripts
+synthetic_company_database.R → generate dataset
+survival_model_salary.R → build attrition model
+survival_curves_salary_band.R → generate retention curves
 
 ---
 
@@ -204,13 +202,16 @@ install.packages(c("dplyr", "tidyr", "stringr", "purrr", "lubridate", "tibble"))
 
 The project produces a complete analytics dataset including:
 
-- Employee master data
-- Compensation history
-- Recruiting pipeline
-- Performance reviews
-- Engagement surveys
-- Learning and leave events
-- Monthly workforce snapshots
+ - Employee master data
+ - Compensation history
+ - Recruiting pipeline
+ - Performance reviews
+ - Engagement surveys
+ - Learning and leave events
+ - Monthly workforce snapshots
+ - Attrition risk modeling outputs
+ - Retention visualization charts
+
 
   
 
@@ -232,6 +233,7 @@ Planned enhancements include:
 - Attrition and retention analysis
 - ERD diagram and schema visualization
 - Advanced analytics use cases
+- Predictive attrition modeling extensions
 
 ---
 

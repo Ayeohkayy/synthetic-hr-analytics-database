@@ -114,7 +114,7 @@ Move beyond traditional attrition rates and model when employees leave and what 
 
 ---
 
-## Visual Insights
+## Visual Insights (Survival Analysis)
 
 ### Attrition Risk by Salary
 ![Attrition Risk Curve](screenshots/Survival%20Analysis/attrition_salary_curve.png)

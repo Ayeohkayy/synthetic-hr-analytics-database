@@ -1,6 +1,11 @@
 # survival_model_salary.R
 # Purpose:
 # Build a Cox proportional hazards model to estimate how salary impacts attrition risk.
+# Uses:
+# - FinalTenureYears
+# - TerminationDate
+# - DepartmentID
+# - CurrentSalary
 # Output:
 # - Console model summary
 # - CSV of model coefficients
@@ -17,7 +22,7 @@ suppressPackageStartupMessages({
 # -----------------------------
 # 1. File paths
 # -----------------------------
-data_path <- "data/employees.csv"
+data_path <- "synthetic_company_database_v2/dim_employees.csv"
 output_dir <- "visuals"
 results_dir <- "results"
 
@@ -32,7 +37,13 @@ employees <- read_csv(data_path, show_col_types = FALSE)
 # -----------------------------
 # 3. Validate required columns
 # -----------------------------
-required_cols <- c("CurrentSalary", "tenure_days", "event", "DepartmentID")
+required_cols <- c(
+  "FinalTenureYears",
+  "TerminationDate",
+  "DepartmentID",
+  "CurrentSalary"
+)
+
 missing_cols <- setdiff(required_cols, names(employees))
 
 if (length(missing_cols) > 0) {
@@ -45,20 +56,23 @@ if (length(missing_cols) > 0) {
 }
 
 # -----------------------------
-# 4. Clean data
+# 4. Clean data and create survival variables
 # -----------------------------
 employees_clean <- employees %>%
-  filter(
-    !is.na(CurrentSalary),
-    !is.na(tenure_days),
-    !is.na(event),
-    !is.na(DepartmentID),
-    tenure_days >= 0,
-    CurrentSalary > 0
-  ) %>%
   mutate(
+    TerminationDate = as.Date(TerminationDate),
+    event = if_else(!is.na(TerminationDate), 1, 0),
+    tenure_days = FinalTenureYears * 365.25,
     Salary_10k = CurrentSalary / 10000,
     DepartmentID = as.factor(DepartmentID)
+  ) %>%
+  filter(
+    !is.na(CurrentSalary),
+    !is.na(FinalTenureYears),
+    !is.na(DepartmentID),
+    CurrentSalary > 0,
+    FinalTenureYears >= 0,
+    tenure_days >= 0
   ) %>%
   droplevels()
 
